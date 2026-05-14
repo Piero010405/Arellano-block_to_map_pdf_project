@@ -11,6 +11,35 @@ paths:
   cache_pdfs_dir: "cache/bolivia/pdfs"
   cache_metadata_dir: "cache/bolivia/metadata"
 
+dataset:
+  id_column: "BLOCK CODE"
+  required_columns:
+    - "BLOCK CODE"
+    - "COUNTRY"
+    - "STATE"
+    - "CITY"
+  normalize_columns: true
+  strip_whitespace: true
+  drop_empty_block_ids: true
+
+aggregation:
+  group_by: ["BLOCK CODE"]
+  rules:
+    BLOCK CODE: "first"
+    COUNTRY: "unique_join_comma"
+    STATE: "unique_join_comma"
+    CITY: "unique_join_comma"
+
+table_fields:
+  - source: "BLOCK CODE"
+    label: "BLOCK_ID"
+  - source: "COUNTRY"
+    label: "País"
+  - source: "STATE"
+    label: "Departamento / Estado"
+  - source: "CITY"
+    label: "Ciudad"
+
 map:
   style: "osm-bright"
   width: 1280
