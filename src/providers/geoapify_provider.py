@@ -79,15 +79,59 @@ class GeoapifyProvider(BaseMapProvider):
         }
 
         if self.map_cfg.get("fit_to_geometry", True):
-            payload["bbox"] = bounds_to_bbox_string(expand_bounds(geom.bounds, margin_ratio))
+            zoom_offset = float(self.map_cfg.get("zoom_offset", 0))
+            base_bounds = expand_bounds(geom.bounds, margin_ratio)
+
+            if zoom_offset > 0:
+                adjusted_bounds = self._shrink_bounds(base_bounds, zoom_offset)
+            else:
+                adjusted_bounds = base_bounds
+
+            minx, miny, maxx, maxy = adjusted_bounds
+
+            payload["area"] = {
+                "type": "rect",
+                "value": {
+                    "lon1": float(minx),
+                    "lat1": float(miny),
+                    "lon2": float(maxx),
+                    "lat2": float(maxy),
+                },
+            }
         else:
             centroid = geom.centroid
-            payload["center"] = f"lonlat:{centroid.x},{centroid.y}"
-            payload["zoom"] = int(self.map_cfg.get("zoom") or 17)
+            payload["center"] = [float(centroid.x), float(centroid.y)]
+            payload["zoom"] = float(self.map_cfg.get("zoom") or 17)
 
         return payload
 
-    @retry(wait=wait_exponential(multiplier=1, min=1, max=10), stop=stop_after_attempt(3))
+    def _shrink_bounds(
+        self,
+        bounds: tuple[float, float, float, float],
+        zoom_offset: float,
+    ) -> tuple[float, float, float, float]:
+        minx, miny, maxx, maxy = bounds
+
+        factor = 2 ** zoom_offset
+
+        center_x = (minx + maxx) / 2
+        center_y = (miny + maxy) / 2
+
+        half_width = (maxx - minx) / (2 * factor)
+        half_height = (maxy - miny) / (2 * factor)
+
+        return (
+            center_x - half_width,
+            center_y - half_height,
+            center_x + half_width,
+            center_y + half_height,
+        )
+
+    @retry(
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        stop=stop_after_attempt(3),
+        reraise=True,
+    )
     def _post_static_map(self, payload: dict[str, Any]) -> bytes:
         params = {"apiKey": self.api_key}
         headers = {"Content-Type": "application/json"}

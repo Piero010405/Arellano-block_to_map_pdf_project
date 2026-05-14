@@ -47,7 +47,8 @@ map:
   scale_factor: 1
   zoom: null
   fit_to_geometry: true
-  margin_ratio: 0.15
+  margin_ratio: 0.12
+  zoom_offset: 0
   geometry_simplify_tolerance: 0.00002
   marker_enabled: false
   attribution_enabled: true
