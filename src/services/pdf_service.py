@@ -97,17 +97,29 @@ class PdfService:
         table.setStyle(
             TableStyle(
                 [
-                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor(tbl_cfg.get("header_background", "#EAEAEA"))),
-                    ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor(tbl_cfg.get("header_text_color", "#000000"))),
+                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor(tbl_cfg.get("header_background", "#15253C"))),
+                    ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor(tbl_cfg.get("header_text_color", "#FFFFFF"))),
+
+                    ("BACKGROUND", (0, 1), (-1, -1), colors.white),
+                    ("TEXTCOLOR", (0, 1), (-1, -1), colors.HexColor("#1F2937")),
+
                     ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
                     ("FONTNAME", (0, 1), (-1, -1), tbl_cfg.get("font_name", "Helvetica")),
-                    ("FONTSIZE", (0, 0), (-1, 0), int(tbl_cfg.get("header_font_size", 10))),
+
+                    ("FONTSIZE", (0, 0), (-1, 0), int(tbl_cfg.get("header_font_size", 11))),
                     ("FONTSIZE", (0, 1), (-1, -1), int(tbl_cfg.get("font_size", 10))),
+
                     ("ALIGN", (0, 0), (-1, -1), "CENTER"),
                     ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                    ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor(tbl_cfg.get("border_color", "#000000"))),
-                    ("TOPPADDING", (0, 0), (-1, -1), float(tbl_cfg.get("padding", 5))),
-                    ("BOTTOMPADDING", (0, 0), (-1, -1), float(tbl_cfg.get("padding", 5))),
+
+                    ("LINEBELOW", (0, 0), (-1, 0), 1.2, colors.HexColor("#15253C")),
+                    ("LINEBELOW", (0, 1), (-1, -1), 0.35, colors.HexColor(tbl_cfg.get("border_color", "#D9E2EC"))),
+                    ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor(tbl_cfg.get("border_color", "#D9E2EC"))),
+
+                    ("TOPPADDING", (0, 0), (-1, -1), float(tbl_cfg.get("padding", 7))),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), float(tbl_cfg.get("padding", 7))),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 8),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 8),
                 ]
             )
         )
