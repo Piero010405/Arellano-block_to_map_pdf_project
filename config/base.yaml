@@ -1,0 +1,73 @@
+project:
+  name: "block-pdf-project"
+  version: "1.0.0"
+
+paths:
+  data_dir: "data"
+  cache_dir: "cache"
+  runs_dir: "runs"
+
+provider:
+  name: "geoapify"
+  endpoint: "https://maps.geoapify.com/v1/staticmap"
+  timeout_seconds: 60
+  max_retries: 3
+  requests_per_second: 2
+  mock_maps: false
+
+processing:
+  default_country: "peru"
+  stop_on_error: false
+  save_manifest: true
+  concurrent_workers: 1
+
+cache:
+  use_cache: true
+  save_to_cache: true
+  skip_existing_maps: true
+  skip_existing_pdfs: true
+
+naming:
+  map_filename_template: "{block_id}.png"
+  pdf_filename_template: "{block_id}.pdf"
+
+dataset:
+  id_column: "BLOCKID"
+  required_columns:
+    - "BLOCKID"
+    - "CITY_PRE"
+    - "ONAME_PRE"
+    - "NAME_PRE"
+    - "STREET_NM_PRE"
+    - "OTYPE_PRE"
+    - "STREET_NM"
+    - "STREET_NO3"
+    - "REF1"
+    - "REF2"
+  normalize_columns: true
+  strip_whitespace: true
+  drop_empty_block_ids: true
+
+aggregation:
+  group_by: ["BLOCKID"]
+  rules:
+    BLOCKID: "first"
+    CITY_PRE: "unique_join_comma"
+
+table_fields:
+  - source: "BLOCKID"
+    label: "BLOCK_ID"
+  - source: "CITY_PRE"
+    label: "CITY_PRE"
+
+selection:
+  strategy: "full"
+  sample_size: null
+  sample_order: "first"   # first | random
+  random_seed: 42
+
+output:
+  use_preview_folder: false
+
+logging:
+  level: "INFO"

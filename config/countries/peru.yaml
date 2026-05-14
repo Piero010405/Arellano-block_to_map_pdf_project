@@ -1,0 +1,29 @@
+country: "peru"
+
+paths:
+  excel_file: "data/peru/input/blocks.xlsx"
+  kml_dir: "data/peru/kml"
+  output_maps_dir: "data/peru/output/maps"
+  output_pdfs_dir: "data/peru/output/pdfs"
+  preview_maps_dir: "data/peru/preview/maps"
+  preview_pdfs_dir: "data/peru/preview/pdfs"
+  cache_maps_dir: "cache/peru/maps"
+  cache_pdfs_dir: "cache/peru/pdfs"
+  cache_metadata_dir: "cache/peru/metadata"
+
+map:
+  style: "osm-bright"
+  width: 1280
+  height: 900
+  scale_factor: 1
+  zoom: null
+  fit_to_geometry: true
+  margin_ratio: 0.15
+  geometry_simplify_tolerance: 0.00002
+  marker_enabled: false
+  attribution_enabled: true
+  polygon:
+    stroke_color: "#FF0000"
+    stroke_width: 3
+    fill_color: "#FF0000"
+    fill_opacity: 0.15

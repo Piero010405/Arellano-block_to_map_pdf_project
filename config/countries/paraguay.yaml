@@ -1,0 +1,29 @@
+country: "paraguay"
+
+paths:
+  excel_file: "data/paraguay/input/blocks.xlsx"
+  kml_dir: "data/paraguay/kml"
+  output_maps_dir: "data/paraguay/output/maps"
+  output_pdfs_dir: "data/paraguay/output/pdfs"
+  preview_maps_dir: "data/paraguay/preview/maps"
+  preview_pdfs_dir: "data/paraguay/preview/pdfs"
+  cache_maps_dir: "cache/paraguay/maps"
+  cache_pdfs_dir: "cache/paraguay/pdfs"
+  cache_metadata_dir: "cache/paraguay/metadata"
+
+map:
+  style: "osm-bright"
+  width: 1280
+  height: 900
+  scale_factor: 1
+  zoom: null
+  fit_to_geometry: true
+  margin_ratio: 0.15
+  geometry_simplify_tolerance: 0.00002
+  marker_enabled: false
+  attribution_enabled: true
+  polygon:
+    stroke_color: "#FF0000"
+    stroke_width: 3
+    fill_color: "#FF0000"
+    fill_opacity: 0.15

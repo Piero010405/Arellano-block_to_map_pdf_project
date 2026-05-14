@@ -1,0 +1,18 @@
+mode: "test"
+
+cache:
+  use_cache: false
+  save_to_cache: false
+  skip_existing_maps: false
+  skip_existing_pdfs: false
+
+selection:
+  strategy: "sample"
+  sample_size: 10
+  sample_order: "first"
+
+output:
+  use_preview_folder: true
+
+provider:
+  requests_per_second: 1

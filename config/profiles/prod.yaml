@@ -1,0 +1,16 @@
+mode: "prod"
+
+cache:
+  use_cache: true
+  save_to_cache: true
+  skip_existing_maps: true
+  skip_existing_pdfs: true
+
+selection:
+  strategy: "full"
+
+output:
+  use_preview_folder: false
+
+provider:
+  requests_per_second: 2

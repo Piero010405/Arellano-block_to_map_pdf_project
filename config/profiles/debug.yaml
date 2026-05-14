@@ -1,0 +1,22 @@
+mode: "debug"
+
+cache:
+  use_cache: false
+  save_to_cache: false
+  skip_existing_maps: false
+  skip_existing_pdfs: false
+
+selection:
+  strategy: "sample"
+  sample_size: 3
+  sample_order: "first"
+
+output:
+  use_preview_folder: true
+
+provider:
+  mock_maps: true
+  requests_per_second: 1
+
+logging:
+  level: "DEBUG"

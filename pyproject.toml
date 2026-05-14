@@ -1,0 +1,15 @@
+[project]
+name = "block-pdf-project"
+version = "1.0.0"
+description = "Generador de PDFs por BLOCKID desde Excel, KML y Geoapify Static Maps"
+requires-python = ">=3.11"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

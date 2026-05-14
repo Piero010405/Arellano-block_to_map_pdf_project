@@ -1,0 +1,35 @@
+pdf:
+  page_size: "A4"
+  orientation: "landscape"
+  margins:
+    left: 30
+    right: 30
+    top: 28
+    bottom: 20
+
+  table:
+    enabled: true
+    font_name: "Helvetica"
+    font_size: 10
+    header_font_size: 10
+    header_background: "#EAEAEA"
+    header_text_color: "#000000"
+    border_color: "#000000"
+    row_height: 24
+    padding: 5
+
+  image:
+    width: 780
+    height: 470
+    keep_aspect_ratio: true
+    space_before: 12
+
+  title:
+    enabled: false
+    text_template: "Bloque {block_id}"
+    font_name: "Helvetica-Bold"
+    font_size: 14
+
+map_preview:
+  image_width: 1280
+  image_height: 900
