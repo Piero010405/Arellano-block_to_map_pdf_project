@@ -7,7 +7,11 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
-# Outputs
+# Inputs sensibles / pesados
+data/**/input/**
+data/**/kml/**
+
+# Outputs generados
 cache/**
 runs/**
 data/**/output/**
@@ -17,3 +21,7 @@ data/**/preview/**
 !cache/.gitkeep
 !runs/.gitkeep
 !data/**/.gitkeep
+!data/**/input/.gitkeep
+!data/**/kml/.gitkeep
+!data/**/output/.gitkeep
+!data/**/preview/.gitkeep
