@@ -12,32 +12,32 @@ paths:
   cache_metadata_dir: "cache/bolivia_dsc/metadata"
 
 dataset:
-  id_column: "BLOCK CODE"
+  id_column: "BlockId!"
   required_columns:
-    - "BLOCK CODE"
-    - "COUNTRY"
-    - "STATE"
-    - "CITY"
+    - "BlockId!"
+    - "Country"
+    - "Province!"
+    - "City!"
   normalize_columns: true
   strip_whitespace: true
   drop_empty_block_ids: true
 
 aggregation:
-  group_by: ["BLOCK CODE"]
+  group_by: ["BlockId!"]
   rules:
-    BLOCK CODE: "first"
-    COUNTRY: "unique_join_comma"
-    STATE: "unique_join_comma"
-    CITY: "unique_join_comma"
+    BlockId!: "first"
+    Country: "unique_join_comma"
+    Province!: "unique_join_comma"
+    City!: "unique_join_comma"
 
 table_fields:
-  - source: "BLOCK CODE"
+  - source: "BlockId!"
     label: "BLOCK_ID"
-  - source: "COUNTRY"
+  - source: "Country"
     label: "País"
-  - source: "STATE"
+  - source: "Province!"
     label: "Departamento / Estado"
-  - source: "CITY"
+  - source: "City!"
     label: "Ciudad"
 
 map:
